@@ -10,12 +10,14 @@ subsetData$DateTime <- paste(subsetData$Date, subsetData$Time, sep = " ") ## Com
 
 subsetData$DateTime <- strptime(subsetData$DateTime, format = "%Y-%m-%d %H:%M:%S")
 
+png("plot4.png", width = 480, height = 480)
+
 par(mfrow=c(2,2))
 
 with(subsetData, {                       ##Plot first two graphs
-     plot(DateTime,Global_active_power, type = "l", ylab="Global Active Power", xlab ="")
-     plot(DateTime, Voltage, type = "l", ylab = "Voltage", xlab="datetime")
-     })
+  plot(DateTime,Global_active_power, type = "l", ylab="Global Active Power", xlab ="")
+  plot(DateTime, Voltage, type = "l", ylab = "Voltage", xlab="datetime")
+})
 
 plot(subsetData$DateTime, subsetData$Sub_metering_1, xlab = "", ylab = "Energy sub metering", ##OG Plot of submeter 1
      col="black", type = "l")
@@ -29,7 +31,5 @@ legend("topright", lwd = 2, col = c("black", "blue", "red"),             ##Add L
 
 plot(subsetData$DateTime, subsetData$Global_reactive_power, xlab = "datetime", 
      ylab = "Global_reactive_power", type ="l")
-
-dev.copy2pdf(file="plot4.pdf")
 
 dev.off()

@@ -10,9 +10,9 @@ subsetData$DateTime <- paste(subsetData$Date, subsetData$Time, sep = " ") ## Com
 
 subsetData$DateTime <- strptime(subsetData$DateTime, format = "%Y-%m-%d %H:%M:%S")
 
+png("plot2.png", width = 480, height = 480)
+
 plot(subsetData$DateTime,subsetData$Global_active_power, xlab = "", ##plot graph, no lines
      ylab = "Global Active Power (kilowatts)", type = "l")
-
-dev.copy2pdf(file = "plot2.pdf")
 
 dev.off()

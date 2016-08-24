@@ -10,6 +10,8 @@ subsetData$DateTime <- paste(subsetData$Date, subsetData$Time, sep = " ") ## Com
 
 subsetData$DateTime <- strptime(subsetData$DateTime, format = "%Y-%m-%d %H:%M:%S")
 
+png("plot3.png", width = 480, height = 480)
+
 plot(subsetData$DateTime, subsetData$Sub_metering_1, xlab = "", ylab = "Energy sub metering", ##OG Plot of submeter 1
      col="black", type = "l")
 
@@ -19,7 +21,5 @@ lines(subsetData$DateTime, subsetData$Sub_metering_3, col ="blue") ## Plot subme
 
 legend("topright", lwd = 2, col = c("black", "blue", "red"),             ##Add Legend
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
-
-dev.copy2pdf(file="plot3.pdf")
 
 dev.off()
